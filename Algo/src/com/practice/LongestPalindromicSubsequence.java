@@ -38,7 +38,7 @@ public class LongestPalindromicSubsequence {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(calculateLPS("agbdba"));
+		System.out.println(calculateLPS("145931"));
 	}
 
 }
