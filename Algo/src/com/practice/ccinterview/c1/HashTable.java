@@ -1,10 +1,5 @@
 package com.practice.ccinterview.c1;
 
+public class HashTable<K, V> {
 
-
-public class HashTable<K,V> {
-
-	
-	
-	
 }
