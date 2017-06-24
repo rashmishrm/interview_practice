@@ -3,34 +3,26 @@ package com.practice.leetcode;
 public class OddEvenLinkedList {
 
 	public static ListNode oddEvenList(ListNode head) {
-		int i=1;
-		ListNode temp=null;
-		ListNode prev=null;
-		ListNode node=head;
-		while(node!=null){
-			if((i%2==0)){
-				
-				
-				prev.next=node.next;
-				temp=node;
-				temp.next=node.next.next;
-				prev.next.next=temp;
-			}else{
-			prev=node;
-			
+		ListNode oddHead = null;
+		if (head != null) {
+			oddHead = head;
+			ListNode evenHead = head.next;
+
+			ListNode odd = head;
+			ListNode even = head.next;
+
+			while (even != null && odd != null && even.next != null && odd.next != null) {
+
+				odd.next = odd.next.next;
+				even.next = even.next.next;
+				odd = odd.next;
+				even = even.next;
 			}
-			node=node.next;
-			i++;
-			
+
+			odd.next = evenHead;
 		}
-		prev.next=temp;
-		
-		
-
-		return head;
+		return oddHead;
 	}
-	
-
 
 	public static void main(String[] args) {
 
