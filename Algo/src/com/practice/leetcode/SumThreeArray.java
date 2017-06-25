@@ -20,6 +20,7 @@ public class SumThreeArray {
 				if (set.contains(sum)) {
 					Set<Integer> val= new TreeSet<Integer>();
 					val.addAll(Arrays.asList(new Integer[] { nums[i], nums[j], -(nums[i] + nums[j]) }));
+					
 					output.add(Arrays.asList(new Integer[] { nums[i], nums[j], -(nums[i] + nums[j]) }));
 					
 				} else {
