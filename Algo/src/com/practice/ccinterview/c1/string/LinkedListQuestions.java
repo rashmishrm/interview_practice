@@ -48,7 +48,7 @@ public class LinkedListQuestions {
 
 	}
 
-	public static Node  kThNodefromLast(Node head, int k) {
+	public static Node kThNodefromLast(Node head, int k) {
 
 		Node p1 = head;
 		Node p2 = head;
@@ -61,16 +61,53 @@ public class LinkedListQuestions {
 			p1 = p1.next;
 			p2 = p2.next;
 		}
-		
+
 		return p1;
 
 	}
 
+	public static Node paritionList(Node node, int k) {
+
+		Node head = null;
+		Node tail = null;
+
+		while (node != null) {
+			if (node.data < k) {
+
+				if (head == null) {
+					head = node;
+				} else {
+					Node temp=node;
+					temp.next=head;
+					head= temp;
+					
+				}
+
+			}
+			else if (node.data >=k) {
+
+				if (tail == null) {
+					tail = node;
+				} else {
+					tail.next=node;
+					tail=node;
+				}
+
+			}
+			node=node.next;
+
+		}
+		
+		return head;
+
+
+	}
+
 	public static void main(String[] args) {
-		Node n = new Node(1);
-		Node n1 = new Node(1);
-		Node n2 = new Node(1);
-		Node n3 = new Node(1);
+		Node n = new Node(90);
+		Node n1 = new Node(13);
+		Node n2 = new Node(8);
+		Node n3 = new Node(12);
 
 		n.next = n1;
 		n1.next = n2;
@@ -78,6 +115,8 @@ public class LinkedListQuestions {
 		removeDups(n);
 
 		System.out.println(n);
+		
+		System.out.println(paritionList(n, 8));
 
 	}
 

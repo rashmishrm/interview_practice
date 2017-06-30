@@ -1,4 +1,4 @@
-package com.practice;
+package com.practice.hackerrank;
 
 import java.util.List;
 import java.util.Map;

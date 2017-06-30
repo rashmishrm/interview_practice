@@ -1,4 +1,4 @@
-package com.practice;
+package com.practice.hackerrank;
 
 public class Substring {
 

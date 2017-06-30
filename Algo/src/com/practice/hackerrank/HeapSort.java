@@ -1,4 +1,4 @@
-package com.practice;
+package com.practice.hackerrank;
 
 /**
  * This program creates Heapsort
