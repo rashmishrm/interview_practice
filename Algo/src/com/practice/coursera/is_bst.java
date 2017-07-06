@@ -55,25 +55,25 @@ public class is_bst {
 			}
 		}
 
+		long max = Long.MIN_VALUE;
+		long min = Long.MAX_VALUE;
+
 		public boolean inOrder(int n, List<Node> list) {
 
 			if (n != -1) {
 
 				inOrder(tree[n].left, list);
 
-				if (list.size() > 0) {
-					Node prev = list.get(list.size() - 1);
-					if (prev.key > tree[n].key) {
-						return false;
-					} else if (prev.key == tree[n].key) {
-						if (!((tree[n].left != -1 && tree[tree[n].left].key < tree[n].key)
-								&& (tree[n].right != -1 && tree[tree[n].right].key >= tree[n].key))) {
-							return false;
-						}
-					}
-
+				if (min > tree[n].key) {
+					min = tree[n].key;
 				}
-				list.add(tree[n]);
+				if (max < tree[n].key) {
+					max = tree[n].key;
+				}
+
+				if (tree[n].key < min && tree[n].key >= tree[n].key) {
+					return false;
+				}
 
 				inOrder(tree[n].right, list);
 			}
@@ -100,7 +100,7 @@ public class is_bst {
 				} catch (IOException e) {
 				}
 			}
-		}, "1", 1 << 35).start();
+		}, "1", 1 << 100).start();
 	}
 
 	public void run() throws IOException {

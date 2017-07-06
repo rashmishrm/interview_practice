@@ -102,6 +102,42 @@ public class LinkedListQuestions {
 
 
 	}
+	
+	
+	public boolean isPalindrome(Node node){
+		Node rev= reverse(node);
+		
+		while(rev!=null && node!=null){
+			if(rev.data!=node.data){
+				return false;
+			}
+			rev=rev.next;
+			node=node.next;
+			
+		}
+		
+		return rev==null && node==null;
+		
+	}
+	
+	public Node reverse(Node node){
+		Node head= null;
+		
+		while(node!=null){
+			Node newNode= new Node(node.data);
+			newNode.next=head;
+			head = newNode;
+			
+			node=node.next;
+		}
+		
+		return head;
+		
+	}
+	
+	
+	
+
 
 	public static void main(String[] args) {
 		Node n = new Node(90);
