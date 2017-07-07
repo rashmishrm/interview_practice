@@ -1,6 +1,6 @@
 package com.practice.ccinterview.c1;
 
-public class Stack<V> {
+public class Stack<V extends Comparable<V>> {
 
 	Node<V> top = null;
 
@@ -25,11 +25,11 @@ public class Stack<V> {
 	}
 
 	public V peek() throws Exception {
-		
+
 		if (top == null) {
 			throw new Exception();
 		}
-		V data=top.value;
+		V data = top.value;
 		return data;
 
 	}
