@@ -1,11 +1,20 @@
 package com.practice.ccinterview.c1;
+class SNode<V> {
+	V value;
+
+	SNode<V> next;
+
+	public SNode(V value) {
+		this.value = value;
+	}
+}
 
 public class Stack<V extends Comparable<V>> {
 
-	Node<V> top = null;
+	SNode<V> top = null;
 
 	public void push(V elemnt) {
-		Node<V> node = new Node<V>(elemnt);
+		SNode<V> node = new SNode<V>(elemnt);
 		node.next = top;
 		top = node;
 
@@ -17,7 +26,7 @@ public class Stack<V extends Comparable<V>> {
 		}
 
 		V data = top.value;
-		Node<V> temp = top.next;
+		SNode<V> temp = top.next;
 		top = temp;
 
 		return data;
