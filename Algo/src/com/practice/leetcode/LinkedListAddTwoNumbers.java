@@ -2,14 +2,7 @@ package com.practice.leetcode;
 
 import java.util.Stack;
 
-class ListNode {
-	int val;
-	ListNode next;
 
-	ListNode(int x) {
-		val = x;
-	}
-}
 
 public class LinkedListAddTwoNumbers {
 
