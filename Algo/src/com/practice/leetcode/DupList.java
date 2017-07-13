@@ -2,7 +2,7 @@ package com.practice.leetcode;
 
 public class DupList {
 
-	public static ListNode deleteDuplicates(ListNode head) {
+	public static ListNode deleteDuplicates1(ListNode head) {
 
 		if (head == null) {
 			return null;
@@ -34,18 +34,17 @@ public class DupList {
 
 				} else {
 					head = temp1.next;
-					if(temp1.val==temp1.next.val){
-						head=null;
+					if (temp1.val == temp1.next.val) {
+						head = null;
 					}
 					if (head != null && head.next == null) {
 						break;
 					}
 				}
-				
-				slow= temp1.next;
-				if(slow!=null)
-				fast=slow.next;
-				
+
+				slow = temp1.next;
+				if (slow != null)
+					fast = slow.next;
 
 			} else {
 				prev = temp2;
@@ -54,6 +53,42 @@ public class DupList {
 		}
 
 		return head;
+
+	}
+
+	public static ListNode deleteDuplicates(ListNode head) {
+
+		if (head == null) {
+			return null;
+		}
+		ListNode psuedohead = new ListNode(0);
+		psuedohead.next = head;
+
+		if (head.next == null) {
+			return head;
+		}
+		ListNode prev = psuedohead;
+
+		ListNode current = head;
+		while (current != null) {
+
+			while (current.next != null && current.val == current.next.val) {
+
+				current = current.next;
+
+			}
+			if (prev.next == current) {
+				prev = prev.next;
+			} else {
+				prev.next = current.next;
+
+			}
+
+			current = current.next;
+
+		}
+
+		return head.next;
 
 	}
 
