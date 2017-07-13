@@ -1,15 +1,6 @@
 package com.practice.leetcode;
 
-class Result {
-	public ListNode tail;
-	public int size = 0;
 
-	public Result(ListNode tail, int size) {
-		this.tail = tail;
-		this.size = size;
-	}
-
-}
 
 public class RotateRight {
 
