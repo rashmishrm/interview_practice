@@ -3,37 +3,38 @@ package com.practice.hackerrank;
 import java.util.Scanner;
 
 public class MaximumGCDAndSum {
-	static int gcd(int x, int y){
-		int r=0;
-		x=Math.abs(x);
-		y=Math.abs(y);
-		if(x!=0 && y!=0){
-		
-         int a=0, b=0;
-        a = (x > y) ? x : y; // a is greater number
-        b = (x < y) ? x : y; // b is smaller number
- 
-        r = b;
-        while(a % b != 0)
-        {
-            r = a % b;
-            a = b;
-            b = r;
-        }
-		
-       
-        }
-		else{
-			 r=x==0?y:x;
-			
+	static int gcd(int x, int y) {
+		int r = 0;
+		if ((x < 0) || (y < 0)) {
+			r = -1;
+		} else {
+			if (x != 0 && y != 0) {
+
+				int a = 0, b = 0;
+				a = (x > y) ? x : y; // a is greater number
+				b = (x < y) ? x : y; // b is smaller number
+
+				r = b;
+				while (a % b != 0) {
+					r = a % b;
+					a = b;
+					b = r;
+				}
+
+			} else {
+				r = x == 0 ? y : x;
+
+			}
 		}
-		 return r;
-    }
+		return r;
+	}
 
 	static int maximumGcdAndSum(int[] A, int[] B) {
 
 		// Complete this function
-
+		if(A==null ||B==null|| A.length!=B.length || A.length<=0 || B.length<=0){
+			return 0;
+		}
 		int mat[][] = new int[A.length + 1][B.length + 1];
 
 		for (int i = 0; i < A.length; i++) {
@@ -43,46 +44,54 @@ public class MaximumGCDAndSum {
 		for (int i = 0; i < B.length; i++) {
 			mat[0][i] = 0;
 		}
-
+		int sum = 0;
 		for (int i = 1; i <= A.length; i++) {
 			for (int j = 1; j <= B.length; j++) {
 				int gcd = Math.max(Math.max(gcd(A[i - 1], B[j - 1]), mat[i - 1][j]), mat[i][j - 1]);
+				if (gcd == -1) {
+					sum = -1;
+					break;
+				}
 				mat[i][j] = gcd;
-				 System.out.print(A[i - 1]+","+B[j - 1]+"::::: "+mat[i][j]+" ");
+				// System.out.print(mat[i][j]+" ");
 
 			}
-			System.out.println();
 		}
+		if (sum != -1) {
+			// backtracking
+			int i = A.length;
+			int j = B.length;
+			int pair1 = A[A.length - 1];
+			int pair2 = B[B.length - 1];
 
-		// backtracking
-		int i = A.length;
-		int j = B.length;
-		int pair1 = A[A.length - 1];
-		int pair2 = B[B.length - 1];
-		int sum = 0;
-		int max = mat[A.length][B.length];
-		System.out.println(max);
-		while (i > 2 && j > 2) {
-			if (mat[i - 1][j] == max || mat[i][j - 1] == max) {
-				if (mat[i - 1][j] == max) {
-					pair1 = A[i - 2];
-					pair2 = B[j - 1];
-					i = i - 1;
+			int max = mat[A.length][B.length];
+			// System.out.println(max);
+			while (i > 1 && j > 1) {
+				if (mat[i - 1][j] == max || mat[i][j - 1] == max) {
+					if (mat[i][j - 1] == max) {
+						pair1 = A[i - 1];
+						pair2 = B[j - 2];
+						j = j - 1;
 
-				} else if (mat[i][j - 1] == max) {
-					pair1 = A[i - 1];
-					pair2 = B[j - 2];
-					j = j - 1;
+					}
+					else if (mat[i - 1][j] == max) {
+						pair1 = A[i - 2];
+						pair2 = B[j - 1];
+						i = i - 1;
 
+					} 
+					if (gcd(pair1, pair2) == max) {
+						sum = sum < pair1 + pair2 ? pair1 + pair2 : sum;
+					}
+				} else {
+					break;
 				}
-				if (gcd(pair1, pair2) == max) {
-					sum = sum < pair1 + pair2 ? pair1 + pair2 : sum;
-				}
-			} else {
-				break;
+
 			}
-
+		} else {
+			sum = 0;
 		}
+
 		return sum;
 
 	}
