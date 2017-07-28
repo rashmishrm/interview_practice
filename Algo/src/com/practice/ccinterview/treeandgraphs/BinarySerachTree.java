@@ -1,4 +1,4 @@
-package com.practice.ccinterview.c1;
+package com.practice.ccinterview.treeandgraphs;
 
 class BTreeNode {
 	int val;
