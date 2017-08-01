@@ -21,14 +21,14 @@ public class Q2_Robo_Grid {
 		List<Point> paths = new ArrayList<Point>();
 		Set<Point> failed = new HashSet<Point>();
 
-		if (maze == null && maze.length != 0 && maze[0].length != 0) {
+		if (maze == null || maze.length != 0 || maze[0].length != 0) {
 			return null;
 		}
 		int r = maze.length;
 		int c = maze[0].length;
 
 		if (r > 0 && c > 0) {
-			pathExists(maze, r, c, paths,failed);
+			pathExists(maze, r, c, paths, failed);
 		}
 		return paths;
 
