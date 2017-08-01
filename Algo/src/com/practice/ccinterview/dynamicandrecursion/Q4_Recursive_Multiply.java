@@ -31,7 +31,7 @@ public class Q4_Recursive_Multiply {
 	public static int multiply_memo(int a, int b) {
 		int smaller = a > b ? b : a;
 		int bigger = b > a ? b : a;
-		int memo[] = new int[smaller+1];
+		int memo[] = new int[smaller + 1];
 		return multiply_memo(smaller, bigger, memo);
 	}
 
@@ -48,10 +48,10 @@ public class Q4_Recursive_Multiply {
 			return memo[smaller];
 		}
 		int s = smaller >> 1;
-		int side1 = multiply_nonmem(s, bigger);
+		int side1 = multiply_memo(s, bigger);
 		int side2 = side1;
 		if (smaller % 2 == 1) {
-			side2 = multiply_nonmem(smaller - s, bigger);
+			side2 = side2 + bigger;
 		}
 
 		int output = side1 + side2;
@@ -63,7 +63,13 @@ public class Q4_Recursive_Multiply {
 
 	public static void main(String[] args) {
 		// System.out.println(8 >> 1);
+		System.out.println(System.currentTimeMillis());
+		System.out.println(multiply_nonmem(3, 9));
+		System.out.println(System.currentTimeMillis());
+		System.out.println(System.currentTimeMillis());
 		System.out.println(multiply_memo(3, 9));
+		System.out.println(System.currentTimeMillis());
+
 	}
 
 }
