@@ -12,6 +12,7 @@ public class CoinChange {
 
 		for (int y = 0; y <= sum; y++) {
 			dim[0][y] = 0;
+		}
 
 			for (int i = 1; i <= array.length; i++) {
 				for (int j = 1; j <= sum; j++) {
@@ -28,7 +29,7 @@ public class CoinChange {
 
 			}
 
-		}
+		
 
 		return dim[array.length][sum];
 	}
