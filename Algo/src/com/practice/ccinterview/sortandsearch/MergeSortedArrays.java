@@ -43,8 +43,8 @@ public class MergeSortedArrays {
 		int i2 = n - 1;
 		int merged = m + n - 1;
 
-		while ( i2 >= 0) {
-			if (i1>=0 && nums1[i1] > nums2[i2]) {
+		while (i2 >= 0) {
+			if (i1 >= 0 && nums1[i1] > nums2[i2]) {
 				nums1[merged] = nums1[i1];
 				i1--;
 			} else {
