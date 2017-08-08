@@ -2,34 +2,60 @@ package com.practice.ccinterview.sortandsearch;
 
 public class QuickSort {
 
-	public static int[] qSort(int[] n, int start, int end) {
-		
-		if(start>end){
-			return n;
+	public static int[] qSort(int[] arr, int left, int right) {
+		if (right > left) {
+			System.out.println("initial");
+			printArray(arr);
+
+			int index = partition(arr, left, right);
+			System.out.println("pivot at"+index);
+			printArray(arr);
+			if (left < index - 1) {
+				qSort(arr, left, index - 1);
+			}
+			if (index < right) {
+				qSort(arr, index, right);
+			}
 		}
-		
-		int pivot = n[start];
+		return arr;
 
-		int st = start + 1;
-		;
+	}
 
-		for (int i = st + 1; i < end; i++) {
-			if (n[pivot] > n[i]) {
-				int temp = n[st];
-				n[st] = n[i];
-				n[i] = temp;
-				st++;
+	public static int partition(int n[], int start, int end) {
+		int pivot = n[(start+end) / 2];
+
+		while (start <= end) {
+			while (pivot > n[start])
+				start++;
+			while (pivot < n[end])
+				end--;
+
+			if (start <= end) {
+				swap(n, start, end);
+				start++;
+				end--;
 			}
 
 		}
-		int temp = n[pivot];
-		n[pivot] = n[st - 1];
-		n[st - 1] = temp;
-		n= qSort(n, 0, st - 1);
-	   // qSort(n, st, end);
 
-		return n;
+		return start;
 
+	}
+
+
+public static void printArray(int n[]){
+	for (int x : n) {
+		System.out.print(x+" , ");
+	}
+	System.out.println("");
+}
+	
+	
+	public static void swap(int[] n, int from, int to) {
+
+		int temp = n[from];
+		n[from] = n[to];
+		n[to] = temp;
 	}
 
 	public static void main(String[] args) {
@@ -37,8 +63,10 @@ public class QuickSort {
 
 		int n[] = qSort(new int[] { 4, 8, 2, 3, 10, 5, 13, 7 }, 0, 7);
 		for (int x : n) {
-			System.out.println(x);
+			System.out.print(x);
 		}
+		System.out.println("");
+
 	}
 
 }
