@@ -40,6 +40,6 @@ public class Q3_Search_In_Rotated_Array {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(search(new int[] { 1, 3 , 5}, 1));
+		System.out.println(search(new int[] { 3, 3 ,4, 5}, 3));
 	}
 }
