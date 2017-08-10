@@ -1,30 +1,23 @@
 package com.practice.karumanchi.chapter3_LinkedLists;
 
 public class Q16_Reverse_LinkedList {
-	public static Node reverse(Node head) {
-		if (head == null) {
-			return null;
-		}
-		Node t = null;
-		return reverse_1(head, t);
-	}
 
-	public static Node reverse_1(Node head, Node t) {
+	public static Node reverse_iterative(Node head) {
 
 		Node node = head;
-		if (node.next == null) {
-			return node;
+		Node revh = head;
+		Node revt = head;
+		while (node != null) {
+
+			node = node.next;
+			Node temp = revh;
+
+			revh = node;
+			revh.next = temp;
+			// revh=revh.next;
+
 		}
-
-		Node n = reverse_1(node.next, t);
-		if (t == null) {
-			t = n;
-			
-		}
-		t.next = node;
-
-		return t;
-
+		return revt;
 	}
 
 	public static void main(String[] args) {
@@ -41,7 +34,7 @@ public class Q16_Reverse_LinkedList {
 		node3.next = node4;
 		node4.next = node5;
 
-		reverse(node);
+		reverse_iterative(node);
 		System.out.println(node);
 	}
 }
