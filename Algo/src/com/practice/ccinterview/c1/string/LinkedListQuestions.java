@@ -1,6 +1,5 @@
 package com.practice.ccinterview.c1.string;
 
-import java.rmi.Remote;
 import java.util.HashMap;
 
 class Node {
