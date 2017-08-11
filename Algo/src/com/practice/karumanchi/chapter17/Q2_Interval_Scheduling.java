@@ -1,8 +1,10 @@
 package com.practice.karumanchi.chapter17;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.PriorityQueue;
 
 //Interval Scheduling Algorithm: Given a set of n intervals S = {(starti, endj)|1 ≤ i
 //≤ n}. Let us assume that we want to find a maximum subset S′ of S such that no pair of
@@ -18,25 +20,62 @@ import java.util.List;
 
 public class Q2_Interval_Scheduling {
 
-	public static classSchedular(List<Time> list){
-		int[] rooms= new int[list.size()];
-		Collections.sort(lis
-		
-	int lastTime= list.get(0).endTime;
-		rooms[0]=list.get(0).endTime;
-		int numRoom=1;
-		
-		for(int i=1;i<list.size();i++){
-			if(!(list.get(i).startTime>=lastTime)){
-			numRoom++;
+	public static int classSchedular(List<Time> list) {
+
+		int rooms = 1;
+		Collections.sort(list, new Comparator<Time>() {
+
+			@Override
+			public int compare(Time o1, Time o2) {
+				return o1.startTime - o2.startTime;
 			}
+		});
+
+		PriorityQueue<Time> pq = new PriorityQueue<>(list.size(), new Comparator<Time>() {
+
+			@Override
+			public int compare(Time o1, Time o2) {
+				return o1.endTime - o2.endTime;
+			}
+		});
+
+		pq.add(list.get(0));
+
+		for (int i = 1; i < list.size(); i++) {
+
+			Time lastTime = pq.poll();
+			if (lastTime != null && list.get(i).startTime < lastTime.endTime) {
+				rooms++;
+				pq.add(lastTime);
+
+				pq.add(list.get(i));
+			}
+
 		}
-		
+
+		return rooms;
+
 	}
 
+	public static void main(String[] args) {
+		List<Time> list = new ArrayList<>();
+		list.add(new Time(10, 12));
+		list.add(new Time(12, 14));
+
+		list.add(new Time(9, 11));
+
+		list.add(new Time(8, 10));
+
+		list.add(new Time(11, 12));
+
+		list.add(new Time(6, 12));
+
+		System.out.println(classSchedular(list));
+
+	}
 }
 
-class Time implements Comparable<Time> {
+class Time {
 	int startTime;
 	int endTime;
 
@@ -44,16 +83,6 @@ class Time implements Comparable<Time> {
 		super();
 		this.startTime = startTime;
 		this.endTime = endTime;
-	}
-
-	@Override
-	public int compareTo(Time o) {
-		if (o.endTime > endTime) {
-			return -1;
-		} else if (o.endTime < endTime) {
-			return 1;
-		}
-		return 0;
 	}
 
 }
