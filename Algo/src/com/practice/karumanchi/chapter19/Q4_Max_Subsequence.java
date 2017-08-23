@@ -17,7 +17,6 @@ public class Q4_Max_Subsequence {
 		int msum = 0;
 		for (int i = 0; i < m.length; i++) {
 			sum = m[i];
-
 			if (msum < sum) {
 				msum = sum;
 			}
