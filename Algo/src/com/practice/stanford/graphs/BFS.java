@@ -17,7 +17,6 @@ public class BFS {
 		Queue<Integer> queue = new LinkedList<>();
 		queue.add(start);
 		visited.add(start);
-		int i = 0;
 		while (!queue.isEmpty()) {
 
 			int v = queue.poll();
@@ -31,7 +30,6 @@ public class BFS {
 				}
 
 			}
-			i++;
 
 		}
 
