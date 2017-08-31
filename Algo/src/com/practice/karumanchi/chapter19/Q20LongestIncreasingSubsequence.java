@@ -26,4 +26,7 @@ public class Q20LongestIncreasingSubsequence {
 
 		return max;
 	}
+	public static void main(String[] args) {
+		System.out.println(lengthOfLIS(new int[] {5,6,3,2,4,7,5,8,9,0}));
+	}
 }

@@ -20,7 +20,6 @@ public class ShortestPath {
 		queue.add(start);
 		visited.add(start);
 		distance[start]=0;
-		int i = 0;
 		a:
 		while (!queue.isEmpty()) {
 
@@ -39,7 +38,6 @@ public class ShortestPath {
 				}
 
 			}
-			i++;
 
 		}
 		
