@@ -62,8 +62,10 @@ public class DFS {
 		map.put(3, Arrays.asList(new Integer[] { 2 }));
 		map.put(5, Arrays.asList(new Integer[] { 3, 4 }));
 
-		//dfs(1, map);
-		dfs_rec(1, map,new HashSet<Integer>());
+		dfs(1, map);
+		Set<Integer> visited = new HashSet<Integer>();
+		visited.add(1);
+		dfs_rec(1, map,visited);
 
 	}
 }
