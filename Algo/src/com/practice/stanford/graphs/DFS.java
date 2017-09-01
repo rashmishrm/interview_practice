@@ -49,7 +49,7 @@ public class DFS {
 
 			}
 		}
-		
+
 	}
 
 	public static void main(String[] args) {
@@ -65,7 +65,7 @@ public class DFS {
 		dfs(1, map);
 		Set<Integer> visited = new HashSet<Integer>();
 		visited.add(1);
-		dfs_rec(1, map,visited);
+		dfs_rec(1, map, visited);
 
 	}
 }
