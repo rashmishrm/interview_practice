@@ -173,7 +173,7 @@ public class StringQuestions {
 
 		System.out.println(checkPermutationIsPalin("abcba"));
 		
-		System.out.println(oneEdit("fakeriam","fakelia"));
+		System.out.println(oneEdit("AAA","ApppA"));
 
 	}
 
