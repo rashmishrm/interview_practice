@@ -12,8 +12,10 @@ public class Decryptor {
 			char ch = message.charAt(i);
 			int ascii = (int) ch;
 			if (Character.isLetter(ch)) {
+				ch=Character.toLowerCase(ch);
 				int aIndex = alphabets.indexOf(ch);
-				result = result + alphabets.charAt(aIndex % 26);
+				System.out.println(aIndex);
+				result = result + alphabets.charAt((aIndex % 26 )+key[j]);
 				;
 				j++;
 
@@ -27,7 +29,7 @@ public class Decryptor {
 	}
 
 	public static void main(String[] args) {
-
+		System.out.println(decrypt("Bjj rwkcs dwpyp fwz ovors wxjs vje tcez fqg"));
 	}
 
 }

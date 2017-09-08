@@ -53,6 +53,57 @@ public class PowerSubset {
 	        }
 	        return min_len;
 	    }
+	 
+	 
+	 static int bsearch(int prefixsum[], int n, int k)
+	 {
+	     int ans = -1;    // Initialize result
+	  
+	     // Do Binary Search for largest subarray size 
+	     int left = 1, right = n;
+	     while (left <= right)
+	     {
+	         int mid = (left + right)/2;
+	  
+	         // Check for all subarrays after mid
+	         int i;
+	         for (i = mid; i <= n; i++)
+	         {
+	             // Checking if all the subarrays of a size
+	             // is less than k.
+	             if (prefixsum[i] - prefixsum[i - mid] > k)
+	                 break;
+	         }
+	  
+	         // All subarrays of size mid have sum less
+	         // than or equal to k
+	         if (i == n+1)
+	         {
+	             left = mid + 1;
+	             ans = mid;
+	         }
+	  
+	         // We found a subrray of size mid with sum
+	         // greater than k
+	         else
+	             right = mid -1;
+	     }
+	  
+	     return ans+1;
+	 }
+	static  int maxSize(int arr[], int k)
+	 {
+		 int n=arr.length;
+	     // Initialize prefix sum array as 0.
+	     int[] prefixsum= new int[n+1];
+	  
+	  
+	     // Finding prefix sum of the array.
+	     for (int i = 0; i < n; i++)
+	         prefixsum[i+1] = prefixsum[i] + arr[i];
+	  
+	     return bsearch(prefixsum, n, k);
+	 }
 	
     static int maxLength(int[] a, int k) {
 		int sum = 0;
@@ -78,7 +129,7 @@ public class PowerSubset {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(smallestSubWithSum(new int[]{1,2,3,4},4));
+		System.out.println(maxSize(new int[]{3,1,2,1},4));
 	}
 
 }
