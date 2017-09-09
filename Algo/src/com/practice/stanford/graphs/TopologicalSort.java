@@ -8,11 +8,12 @@ import java.util.Map;
 import java.util.Set;
 
 public class TopologicalSort {
-static int num=0;
-	public static void dfs_rec(int start, Map<Integer, List<Integer>> adjancylist, Set<Integer> visited, int[] f
-			) {
+	static int num = 0;
+
+	public static void dfs_rec(int start, Map<Integer, List<Integer>> adjancylist, Set<Integer> visited, int[] f) {
 
 		List<Integer> connected = adjancylist.get(start);
+		visited.add(start);
 		for (Integer w : connected) {
 			if (!visited.contains(w)) {
 				visited.add(w);
@@ -27,12 +28,12 @@ static int num=0;
 
 	}
 
-	public static void topologicalsort( Map<Integer, List<Integer>> adjancylist) {
+	public static void topologicalsort(Map<Integer, List<Integer>> adjancylist) {
 
 		Set<Integer> visited = new HashSet<Integer>();
 
 		num = adjancylist.size();
-		int f[] = new int[adjancylist.size()+1];
+		int f[] = new int[adjancylist.size() + 1];
 
 		Set<Integer> set = adjancylist.keySet();
 
@@ -45,25 +46,24 @@ static int num=0;
 			}
 
 		}
-		
-		for(int o:f){
 
-		System.out.println(o);
+		for (int o : f) {
+
+			System.out.println(o);
 		}
 
 	}
-	
+
 	public static void main(String[] args) {
 
 		Map<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>();
 
 		map.put(4, Arrays.asList(new Integer[] { 2, 3 }));
 		map.put(2, Arrays.asList(new Integer[] { 1 }));
-		map.put(3, Arrays.asList(new Integer[] { 1}));
-		map.put(1, Arrays.asList(new Integer[] { }));
+		map.put(3, Arrays.asList(new Integer[] { 1 }));
+		map.put(1, Arrays.asList(new Integer[] {}));
 
-		topologicalsort( map);
-		
+		topologicalsort(map);
 
 	}
 
