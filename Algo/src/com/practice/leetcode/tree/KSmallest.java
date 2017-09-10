@@ -12,26 +12,38 @@ class TreeNode {
 }
 
 public class KSmallest {
+	static int value=0;
+	   static int level=0;
+		public int kthSmallest(TreeNode root, int k) {
+			level=k;
+	        inorder(root, k);
+			 return value;
+		}
 
-	public int kthSmallest(TreeNode root, int k) {
-		return inorder(root, k, 0);
-	}
 
-	public int inorder(TreeNode root, int k, int level) {
-		if (root != null) {
-			level++;
-			inorder(root.left, k, level);
+		public void inorder(TreeNode root, int k) {
+			if (root != null) {
+	            
+				if(root.left!=null)
+				inorder(root.left, k);
 
-			if (k == level) {
-				return root.val;
+	            level--;
+
+
+				if ( level==0) {
+					value=root.val;
+					return ;
+				}
+
+
+	            
+				if(root.right!=null)
+				inorder(root.right, k);
+				
 			}
 
-			inorder(root.right, k, level);
-
 		}
-		return 0;
-
-	}
-	
+		
+		
 	
 }
