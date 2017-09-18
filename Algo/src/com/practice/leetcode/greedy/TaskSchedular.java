@@ -16,8 +16,7 @@ public class TaskSchedular {
 		@Override
 		public int compareTo(Task o) {
 			// TODO Auto-generated method stub
-			return this.count - o.count;
-		}
+			return o.count-this.count;		}
 
 		public Task(String task, int count) {
 			super();
@@ -25,6 +24,11 @@ public class TaskSchedular {
 			this.count = count;
 		}
 
+		@Override
+		public String toString() {
+			// TODO Auto-generated method stub
+			return task+"::"+count;
+		}
 	}
 
 	public static int leastInterval(char[] tasks, int n) {
@@ -42,6 +46,8 @@ public class TaskSchedular {
 			Task task = new Task(entry.getKey(), entry.getValue());
 			q.add(task);
 		}
+		
+		System.out.println(q);
 		int time = 0;
 		while (!q.isEmpty()) {
 
@@ -75,6 +81,6 @@ public class TaskSchedular {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(leastInterval(new char[]{'A','A','A','B','B','B'},2));
+		System.out.println(leastInterval(new char[]{'A','A','A','A','A','A','B','C','D','E','F','G'},2));
 	}
 }
