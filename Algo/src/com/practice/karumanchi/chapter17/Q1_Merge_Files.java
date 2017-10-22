@@ -9,6 +9,9 @@ public class Q1_Merge_Files {
 		for (int i = 0; i < n.length; i++) {
 			pq.add(n[i]);
 		}
+		System.out.println(pq);
+		System.out.println(pq);
+
 		int mergeCost = 0;
 
 		while (pq.size() != 1) {
