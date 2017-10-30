@@ -72,7 +72,7 @@ public class HIndexII {
     }
 
     public static void main(String[] args) {
-        System.out.println(new HIndex_Medium().hIndex( new int[]{0,1,2,5,6} ));
+        System.out.println(new HIndexII().hIndex( new int[]{0,1,2,5,6} ));
     }
 
 }
