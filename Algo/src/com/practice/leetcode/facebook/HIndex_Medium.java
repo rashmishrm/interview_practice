@@ -63,9 +63,6 @@ int count=0;
         }
         }
 
-
-
-
     return hIndex;
 
     }
