@@ -58,11 +58,12 @@ public class TopologicalSort {
 
 		Map<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>();
 
-		map.put(4, Arrays.asList(new Integer[] { 2, 3 }));
-		map.put(2, Arrays.asList(new Integer[] { 1 }));
-		map.put(3, Arrays.asList(new Integer[] { 1 }));
-		map.put(1, Arrays.asList(new Integer[] {}));
 
+		map.put(2, Arrays.asList(new Integer[] { 0,3 }));
+		map.put(3, Arrays.asList(new Integer[] { 1 }));
+		map.put(1, Arrays.asList(new Integer[] {0}));
+		map.put(0, Arrays.asList(new Integer[] {}));
+		
 		topologicalsort(map);
 
 	}
