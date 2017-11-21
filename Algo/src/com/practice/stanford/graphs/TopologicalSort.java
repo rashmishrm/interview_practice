@@ -32,8 +32,8 @@ public class TopologicalSort {
 
 		Set<Integer> visited = new HashSet<Integer>();
 
-		num = adjancylist.size();
-		int f[] = new int[adjancylist.size() + 1];
+		num = adjancylist.size() - 1;
+		int f[] = new int[adjancylist.size()];
 
 		Set<Integer> set = adjancylist.keySet();
 
@@ -58,12 +58,11 @@ public class TopologicalSort {
 
 		Map<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>();
 
+		map.put(2, Arrays.asList(new Integer[] { 3 }));
+		map.put(3, Arrays.asList(new Integer[] {}));
+		map.put(1, Arrays.asList(new Integer[] { 3 }));
+		map.put(0, Arrays.asList(new Integer[] { 1, 2 }));
 
-		map.put(2, Arrays.asList(new Integer[] { 0,3 }));
-		map.put(3, Arrays.asList(new Integer[] { 1 }));
-		map.put(1, Arrays.asList(new Integer[] {0}));
-		map.put(0, Arrays.asList(new Integer[] {}));
-		
 		topologicalsort(map);
 
 	}
