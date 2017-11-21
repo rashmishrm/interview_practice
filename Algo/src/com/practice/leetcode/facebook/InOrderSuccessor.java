@@ -19,49 +19,96 @@ class BNode {
 
 class InOrderSuccsessor {
 	public BNode inorderSuccessor(BNode root, BNode k) {
-		
-		if(root==null || k==null) {
+
+		if (root == null || k == null) {
 			return null;
 		}
 
-		if(k.right!=null) {
-			BNode n= k.right;
-			if(k.right.left!=null) {
-				k=k.right.left;
-				while(k.left!=null) {
-					k=k.left;
+		if (k.right != null) {
+			BNode n = k.right;
+			if (k.right.left != null) {
+				k = k.right.left;
+				while (k.left != null) {
+					k = k.left;
 				}
 				return k;
-			}
-			else {
+			} else {
 				return k.right;
 			}
-			
-			
+
+		} else {
+			BNode node = root;
+			BNode prev = null;
+			while (node != null) {
+				if (node.data > k.data) {
+					prev = node;
+					node = node.left;
+
+				} else if (node.data < k.data) {
+					node = node.right;
+				} else {
+					break;
+				}
+			}
+
 		}
-		else {
-			BNode node= root;
-			BNode prev=null;
-			while(node!=null) {
-			if(node.data>k.data) {
-				prev=node;
-				node=node.left;
-				
-				
-			}
-			else if(node.data<k.data) {
-				prev=node;
-				node=node.right;
-			}
-			else {
-			break;
-			}
-			}
-			
-			
-		}
-		
+
 		return null;
-		
+
 	}
+
+	BNode outp;
+
+	public BNode inorderSuccessor1(BNode root, BNode k) {
+		// add code here.
+		outp = null;
+		foo(root, k.data);
+		return outp;
+	}
+
+	public void foo(BNode root, int b) {
+		if (root == null)
+			return;
+		if (root.data > b) {
+			outp = root;
+			foo(root.left, b);
+		} else {
+			foo(root.right, b);
+		}
+	}
+	
+	struct node * inOrderSuccessor(struct node *root, struct node *n)
+	{
+	    // step 1 of the above algorithm
+	    if( n->right != NULL )
+	        return minValue(n->right);
+	 
+	    struct node *succ = NULL;
+	 
+	    // Start from root and search for successor down the tree
+	    while (root != NULL)
+	    {
+	        if (n->data < root->data)
+	        {
+	            succ = root;
+	            root = root->left;
+	        }
+	        else if (n->data > root->data)
+	            root = root->right;
+	        else
+	           break;
+	    }
+	 
+	    return succ;
+	}
+	
+	   Node minValue(Node node) {
+	        Node current = node;
+	 
+	        /* loop down to find the leftmost leaf */
+	        while (current.left != null) {
+	            current = current.left;
+	        }
+	        return current;
+	    }
 }
