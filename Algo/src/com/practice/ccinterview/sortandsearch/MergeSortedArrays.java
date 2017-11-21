@@ -1,5 +1,10 @@
 package com.practice.ccinterview.sortandsearch;
 
+import java.util.NavigableMap;
+import java.util.NavigableSet;
+import java.util.TreeMap;
+import java.util.TreeSet;
+
 public class MergeSortedArrays {
 	public void merge(int[] nums1, int m, int[] nums2, int n) {
 
@@ -13,6 +18,7 @@ public class MergeSortedArrays {
 			nums1[j + m] = nums2[j];
 		}
 
+	
 		int hleft = 0;
 		int hright = m;
 		int current = 0;
@@ -65,6 +71,36 @@ public class MergeSortedArrays {
 		new MergeSortedArrays().mergefaster(n, 3, n1, 3);
 
 		printArray(n);
+		
+		
+		// creating tree map 
+		   NavigableMap<Integer, String> treemap = new TreeMap<Integer, String>();
+		      
+		   // populating tree map
+		   treemap.put(2, "two");
+		   treemap.put(1, "one");
+		   treemap.put(3, "three");
+		   treemap.put(6, "six");
+		   treemap.put(5, "five");
+		      
+		   NavigableSet<Integer> nn= new TreeSet<>();
+		   
+		   nn.add(1);
+		   nn.add(7);
+		   nn.add(3);
+		   nn.add(8);
+		   nn.add(10);
+		   
+		  
+		   System.out.println(nn.floor(4));
+		   System.out.println(nn.ceiling(5));
+		   
+		   System.out.println("Ceiling key entry for 4: "+ treemap.ceilingKey(4));
+		   System.out.println("Ceiling key entry for 5: "+ treemap.ceilingKey(5));
+		   System.out.println("Ceiling key entry for 7: "+ treemap.ceilingKey(7));
+		 
+				
+				
 	}
 
 	public static void printArray(int n[]) {
