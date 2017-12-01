@@ -62,7 +62,6 @@ public class Aesteroid {
 	}
 
 	public static void main(String[] args) {
-
 		// int[] a = { 10, -5, 5, 10 };
 		int[] a = { 10, 2, -5 };
 
