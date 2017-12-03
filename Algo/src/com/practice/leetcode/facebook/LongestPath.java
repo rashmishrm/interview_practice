@@ -61,7 +61,7 @@ public class LongestPath {
 
 			}
 
-			result = longPath1(node);
+			result = longPath(node);
 
 		}
 
@@ -72,45 +72,18 @@ public class LongestPath {
 		if (root == null) {
 			return 0;
 		}
-		maxDepth(root);
+		maxDepth(root, root.label);
 		return max;
 	}
 
-	int maxDepth(TNode node) {
-
-		if (node == null) {
-			return 0;
-		}
-		label = node.label;
-		int left = maxDepth(node.left);
-		int right = maxDepth(node.right);
-		System.out
-				.println("left: " + left + ": rigth" + right + "node " + node.val + ":: " + node.label + ":: " + label);
-		max = Math.max(max, left + right);
-
-		if (label == node.label)
-			return Math.max(left, right) + 1;
-
-		return 0;
-
-	}
-
-	public int longPath1(TNode root) {
-		if (root == null) {
-			return 0;
-		}
-		maxDepth1(root, root.label);
-		return max;
-	}
-
-	int maxDepth1(TNode root, int label) {
+	int maxDepth(TNode root, int label) {
 
 		if (root == null) {
 			return 0;
 		}
 
-		int left = maxDepth1(root.left, root.label);
-		int right = maxDepth1(root.right, root.label);
+		int left = maxDepth(root.left, root.label);
+		int right = maxDepth(root.right, root.label);
 
 		max = Math.max(max, left + right);
 
@@ -126,17 +99,17 @@ public class LongestPath {
 
 	public static void main(String[] args) {
 
-		int n[] = { 5, 5, 5, 4, 3, 5 };
+		//int n[] = { 5, 5, 5, 4, 3, 5 };
 
-		int e[] = { 1, 2, 1, 5, 2, 3, 2, 4, 5, 6 };
-		// int e[] = { 1, 2, 1, 3, 2, 4, 2, 5 };
+		//int e[] = { 1, 2, 1, 5, 2, 3, 2, 4, 5, 6 };
+		 int e[] = { 1, 2, 1, 3, 2, 4, 2, 5 };
 
 		int n1[] = { 1, 1, 1, 2, 2 };
 
 		// int n[] = { 1,1,1};
 
 		// int e[] = { 1,2,1,3};
-		System.out.println(new LongestPath().solution(n, e));
+		System.out.println(new LongestPath().solution(n1, e));
 
 	}
 
