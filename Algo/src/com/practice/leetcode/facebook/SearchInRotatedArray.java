@@ -48,6 +48,6 @@ public class SearchInRotatedArray {
 	
 	
 	public static void main(String[] args) {
-		search(new int[] {1}, 1);
+		search(new int[] {15,16,18,19,1,3,4,5,7,10,14}, 5);
 	}
 }

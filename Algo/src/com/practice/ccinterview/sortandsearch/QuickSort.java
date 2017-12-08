@@ -59,9 +59,9 @@ public static void printArray(int n[]){
 	}
 
 	public static void main(String[] args) {
-		System.out.println(qSort(new int[] { 4, 8, 2, 3, 10, 5, 13, 7 }, 0, 7));
+		//System.out.println(qSort(new int[] { 4, 8, 2, 3, 10, 5, 13, 7 }, 0, 7));
 
-		int n[] = qSort(new int[] { 4, 8, 2, 3, 10, 5, 13, 7 }, 0, 7);
+		int n[] = qSort(new int[] { 1,8,9,3,5,4,11,13 }, 0, 7);
 		for (int x : n) {
 			System.out.print(x);
 		}
