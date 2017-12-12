@@ -1,6 +1,8 @@
 package com.practice.ccinterview.dynamicandrecursion;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class PowerSubset {
 
@@ -127,9 +129,40 @@ public class PowerSubset {
 		
 		return len;
 	}
-	
+    public static List<List<Integer>> subsetsWithDup(int[] nums) {
+        Arrays.sort(nums);
+         List<List<Integer>> list= new ArrayList<>();
+            list.add(new ArrayList<Integer>());
+            int startIndex=0;
+            int size=0;
+               
+                for(int i=0;i<nums.length;i++){  
+                List<List<Integer>> temp= new ArrayList<>(); 
+                startIndex = ((i >= 1 )&& (nums[i] == nums[i - 1]) )? size : 0;
+                size=list.size();
+           
+                 for(int j=startIndex;j<size;j++){
+                    
+                     List<Integer> newList= new ArrayList<>(list.get(j));
+                     newList.add(nums[i]);
+                     temp.add(newList);
+                   
+               
+                    
+                   
+                 }
+                 list.addAll(temp);  
+                    
+                }
+                
+            return list;
+        }
 	public static void main(String[] args) {
 		System.out.println(maxSize(new int[]{3,1,2,1},4));
+		
+		System.out.println(findSubSets(new int[]{3,1,2,1}));
+
+		System.out.println(subsetsWithDup(new int[]{1,2,2}));
 	}
 
 }

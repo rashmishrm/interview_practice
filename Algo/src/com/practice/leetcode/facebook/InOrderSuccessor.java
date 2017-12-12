@@ -17,6 +17,17 @@ class BNode {
 	}
 }
 
+class BTNodeWithP{
+	int data;
+	BTNodeWithP left, right, parent;
+	
+	BTNodeWithP(int d){
+		data = d;
+		left = right = null;
+	}
+	
+}
+
 class InOrderSuccsessor {
 	public BNode inorderSuccessor(BNode root, BNode k) {
 
@@ -77,6 +88,36 @@ class InOrderSuccsessor {
 		}
 	}
 	
+	public BTNodeWithP next( BTNodeWithP node) {
+		if(node.right!=null) {
+			
+				node=node.right;
+				while(node.left!=null) {
+					node=node.left;
+				}
+				return node;
+			
+		}
+		
+		else {
+			BTNodeWithP tnode = node;
+			BTNodeWithP parent = node.parent;
+			
+			while(parent!=null && tnode.data!=parent.left.data) {
+				tnode=parent;
+				parent= parent.parent;
+			}
+			
+			return parent;
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
 	struct node * inOrderSuccessor(struct node *root, struct node *n)
 	{
 	    // step 1 of the above algorithm
@@ -112,3 +153,14 @@ class InOrderSuccsessor {
 	        return current;
 	    }
 }
+
+
+
+
+
+
+
+
+
+
+

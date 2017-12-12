@@ -1,6 +1,12 @@
 package com.practice.leetcode.facebook;
 
 import java.util.Stack;
+//Given an absolute path for a file (Unix-style), simplify it.
+//
+//For example,
+//path = "/home/", => "/home"
+//path = "/a/./b/../../c/", => "/c"
+//click to show corner cases.
 
 public class SimplifyPath {
 	public String simplifyPath(String path) {
