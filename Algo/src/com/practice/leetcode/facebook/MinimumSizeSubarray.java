@@ -1,4 +1,5 @@
 package com.practice.leetcode.facebook;
+
 //Given an array of n positive integers and a positive integer s, find the minimal length of a contiguous subarray of which the sum ≥ s. If there isn't one, return 0 instead.
 //
 //For example, given the array [2,3,1,2,4,3] and s = 7,
@@ -33,6 +34,33 @@ public class MinimumSizeSubarray {
 		}
 
 		return min == Integer.MAX_VALUE ? 0 : min + 1;
+	}
+
+	boolean hasSequence(int[] nums, int T) {
+		if (T <= 0)
+			return false;
+		if (nums.length == 0)
+			return false;
+		int i = 0;
+		int start = 0;
+		int sum = 0;
+		while (i < nums.length) {
+			if (sum + nums[i] < T)
+				sum += nums[i];
+			else if (sum + nums[i] == T)
+				return true;
+			else {
+				sum += nums[i];
+				while (sum > T) {
+					sum -= nums[start];
+					start++;
+				}
+				if (sum == T)
+					return true;
+			}
+			i++;
+		}
+		return false;
 	}
 
 	public static void main(String[] args) {

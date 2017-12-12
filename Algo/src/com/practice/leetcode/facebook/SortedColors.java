@@ -25,7 +25,7 @@ public class SortedColors {
                  nums[findex]=nums[p2];
                nums[p2]=2;
                p2--;
-          //  findex--;
+           findex--;
 
 
            }
@@ -39,7 +39,9 @@ public class SortedColors {
     }
     
     public static void main(String[] args) {
-    	int nums[]= {1,1,2,0,0,2,1,1};
+    	int nums[]= {1,1,2,0,0,2,1,1,2,2,2,2,2,0,0,0};
 		new SortedColors().sortColors(nums);
+		for(int n:nums) {	System.out.println(n);}
+	
 	}
 }
