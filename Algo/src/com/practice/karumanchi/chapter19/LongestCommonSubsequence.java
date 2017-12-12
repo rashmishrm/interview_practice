@@ -70,9 +70,8 @@ public class LongestCommonSubsequence {
 				if (res >= k) {
 					return true;
 				}
-				System.out.print(matrix[i][j]);
+
 			}
-			System.out.println("");
 
 		}
 
@@ -124,8 +123,8 @@ public class LongestCommonSubsequence {
 
 		System.out.println(lcs_faster_memo_iterative(str.toCharArray(), str2.toCharArray()));
 		System.out.println(lcs_faster_memo_iterative_findString(str.toCharArray(), str2.toCharArray()));
-		
-		System.out.println(kcs_faster_memo_iterative(str.toCharArray(),str2.toCharArray(),2));
+
+		System.out.println(kcs_faster_memo_iterative(str.toCharArray(), str2.toCharArray(), 2));
 
 	}
 }
