@@ -43,7 +43,69 @@ public class SearchInRotatedArray {
 
 	}
 
+
+	public  static boolean dupsearch(int[] nums, int target) {
+		if(nums==null || nums.length==0) {
+			return false;
+		}
+		
+		
+		
+		return searchdup(nums, nums.length-1, 0, target)!=-1;
+	}
+
+	public  static int searchdup(int[] nums, int high, int low, int target) {
+
+		int result = -1;
+        
+        if(low <0 || high >= nums.length ||  low>high){
+        return -1;}
+
+		int mid = low + ((high - low) / 2);
+		if (nums[mid] == target) {
+			return mid;
+		}
+
+		else if (nums[low] < nums[mid]) {
+			if (nums[low] <= target && target < nums[mid]) {
+				high = mid - 1;
+				result = searchdup(nums, high, low, target);
+			} else {
+				low = mid + 1;
+				result = searchdup(nums, high, low, target);
+			}
+
+		} else if (nums[low] > nums[mid]) {
+			if (nums[mid] < target && target <= nums[high]) {
+				low = mid + 1;
+				result = searchdup(nums, high, low, target);
+			} else {
+				high = mid - 1;
+				result = searchdup(nums, high, low, target);
+			}
+
+		} else if (nums[mid] == nums[low]) {
+			if (nums[mid] != nums[high]) {
+				low = mid + 1;
+				result = searchdup(nums, high, low, target);
+			} else {
+				result = searchdup(nums, mid - 1, low, target);
+				if (result == -1) {
+					result = searchdup(nums, high, mid + 1, target);
+				}
+			}
+
+		}
+		return result;
+	}
+	
+	
+	
+	
+	
 	public static void main(String[] args) {
-		System.out.println(search(new int[] { 15, 16, 18, 19, 1, 3, 4, 5, 7, 10, 14 }, 5));
+		System.out.println(dupsearch(new int[] { 18, 18, 18, 18, 18, 18, 18, 5, 7, 10, 14 },  5));
+		System.out.println(search(new int[] { 18, 18, 18, 18, 18, 18, 18, 5, 7, 10, 14 },  18));
+
 	}
 }

@@ -1,7 +1,9 @@
 package com.practice.leetcode.facebook;
 
 import java.util.*;
-
+//Given a digit string, return all possible letter combinations that the number could represent.
+//
+//A mapping of digit to letters (just like on the telephone buttons) is given below.
 public class PhoneNumberLC {
     public List<String> letterCombinations(String digits) {
         List<String> output= new ArrayList<String>();
