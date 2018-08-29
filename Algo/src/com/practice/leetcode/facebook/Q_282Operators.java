@@ -66,7 +66,7 @@ class Q_282Operators {
 			for (String e : array) {
 
 				temp.add(new StringBuilder(number + e));
-				out.add(Character.getNumericValue(number);
+				out.add(Character.getNumericValue(number));
 
 			}
 
